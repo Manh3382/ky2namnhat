@@ -8,14 +8,14 @@
 int a[MAX][MAX], b[MAX][MAX], c[MAX][MAX];
 int m, n, p, q;
 
-void NMtA(int a[MAX][MAX], int m, int n){
+void nhapMaTranA(int a[MAX][MAX], int m, int n){
 	for(int i=0; i<m; i++){
 		for(int j=0; j<n; j++){
 			scanf("%d", &a[i][j]);
 		}
 	}
 }
-void XMtA(int a[MAX][MAX], int m, int n){
+void inMaTranA(int a[MAX][MAX], int m, int n){
 	for(int i=0; i<m; i++){
 		for(int j=0; j<n; j++){
 			printf("%d ", a[i][j]);
@@ -24,14 +24,14 @@ void XMtA(int a[MAX][MAX], int m, int n){
 	}
 }
 
-void NMtB(int b[MAX][MAX], int p, int q){
+void nhapMaTranB(int b[MAX][MAX], int p, int q){
 	for(int i=0; i<p; i++){
 		for(int j=0; j<q; j++){
 			scanf("%d", &b[i][j]);
 		}
-	}	
+	}
 }
-void XMtB(int b[MAX][MAX], int p, int q){
+void inMaTranB(int b[MAX][MAX], int p, int q){
 	for(int i=0; i<p; i++){
 		for(int j=0; j<q; j++){
 			printf("%d ", b[i][j]);
@@ -40,7 +40,7 @@ void XMtB(int b[MAX][MAX], int p, int q){
 	}
 }
 // thuc hien phep nhan
-void NMtC(int a[MAX][MAX], int b[MAX][MAX], int m, int n, int p, int q){
+void nhanMaTranC(int a[MAX][MAX], int b[MAX][MAX], int m, int n, int p, int q){
 	if(n==p){
 		for(int i=0; i<m; i++){
 			for(int j=0; j<q; j++){
@@ -54,7 +54,7 @@ void NMtC(int a[MAX][MAX], int b[MAX][MAX], int m, int n, int p, int q){
 		return ;
 	}
 }
-void XMtC(int c[MAX][MAX], int m, int q){
+void inMaTranC(int c[MAX][MAX], int m, int q){
 	if(n==p){
 		printf("Ma tran C: \n");
 		for(int i=0; i<m; i++){
@@ -69,18 +69,16 @@ void XMtC(int c[MAX][MAX], int m, int q){
 int main() {
 	printf("Nhap so hang cua ma tran A: "); scanf("%d", &m);
 	printf("Nhap so cot cua ma tran A: "); scanf("%d", &n);
-	NMtA(a,m,n);
-	printf("Ma tran A: \n");
-	XMtA(a,m,n);
-	
+	nhapMaTranA(a,m,n);
 	printf("Nhap so hang cua ma tran B: "); scanf("%d", &p);
 	printf("Nhap so cot cua ma tran B: "); scanf("%d", &q);
-	NMtA(b,p,q);
+	nhapMaTranB(b,p,q);
+
+    printf("Ma tran A: \n");
+	inMaTranA(a,m,n);
 	printf("Ma tran B: \n");
-	XMtA(b,p,q);
-	
-	NMtC(a,b,m,n,p,q);
-	XMtC(c,m,q);
+	inMaTranB(b,p,q);
+	nhanMaTranC(a,b,m,n,p,q);
+	inMaTranC(c,m,q);
    return 0;
 }
-

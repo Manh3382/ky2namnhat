@@ -34,7 +34,7 @@ void MangAm(int a[], unsigned n){
 int main() {
 	unsigned n;
 	int a[MAX];
-	
+
 	printf("Nhap so luong phan tu: ");
 	scanf("%u", &n);
 	Nhap(a,n);
@@ -44,7 +44,6 @@ int main() {
 	MangDuong(a,n);
 	printf("\nMang cac so am la: ");
 	MangAm(a,n);
-		
+
    return 0;
 }
-

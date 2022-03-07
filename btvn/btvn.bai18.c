@@ -31,13 +31,13 @@ void xuatMaTran(int a[MAX][MAX], int n){
 	}
 }
 // a.
-int kTraMaTranDonVi(int a[MAX][MAX], int n){
+_Bool kTraMaTranDonVi(int a[MAX][MAX], int n){
 	for(int i=0; i<n; i++){
 		if(a[i][i] != 1){
 			return 0;
 		}
 	}
-	
+
 	for(int i=0; i<n; i++){
 		for(int j=i+1; j<n; j++){
 			if(a[i][j] != 0 || a[j][i] != 0){
@@ -72,14 +72,21 @@ int tichCoty(int a[MAX][MAX], int n, int y){
 	return ty;
 }
 // .d
-bool laSoNguyenTo(int n){
-	if(n<=1)
-		return false;
-	for(int i=2;i<n;i++){
-		if(n%i==0)
-			return false;
-	return true;
-	}
+_Bool laSoNguyenTo(int n){
+    if(n<2){
+        return false;
+    }
+    int countt=0;
+    for(int i=2; i<= sqrt(n); i++){
+        if(n%i==0){
+            countt++;
+        }
+    }
+    if(countt==0){
+        return true;
+    }else{
+        return false;
+    }
 }
 
 int xetSoNguyenTo(int a[MAX][MAX], int n){
@@ -93,14 +100,14 @@ int xetSoNguyenTo(int a[MAX][MAX], int n){
 				dem ++;
 			}
 		printf("Hang thu %d co %d so nguyen to.\n", i+1, dem);
-		
+
 		if(demmax < dem){
 			demmax = dem;
 			vitri = i+1;
 		}
 	}
 	switch (demmax){
-		case 0: 
+		case 0:
 			printf("Khong hang nao co SNT.\n");
 			break;
 		default:
@@ -158,4 +165,3 @@ int main() {
 	printf("Ma tran tren chua %d so am \n", soAm(a,n));
    return 0;
 }
-
