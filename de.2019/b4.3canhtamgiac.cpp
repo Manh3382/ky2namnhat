@@ -18,7 +18,7 @@ int main() {
 		} else if(a==b||a==c||b==c){
 			printf("Ba canh tao thanh tam giac can");
 		} else if(a==b&&b==c){
-			printf("Ba can tao thanh tam giac deu");
+			printf("Ba canh tao thanh tam giac deu");
 		} else {
 			printf("Ba canh tao thanh tam giac thuong");
 		}
