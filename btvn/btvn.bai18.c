@@ -4,7 +4,7 @@
 #define MAX 1000
 #define true 1
 #define false 0
-
+int b[MAX];
 int a[MAX][MAX];
 /*
 	a. Kiem tra xem ma tran vua nhap co phai ma tran don vi khong
@@ -25,7 +25,7 @@ void nhapMaTran(int a[MAX][MAX], int n){
 void xuatMaTran(int a[MAX][MAX], int n){
 	for(int i=0; i<n; i++){
 		for(int j=0; j<n; j++){
-			printf("%d\t", a[i][j]);
+			printf("%8d", a[i][j]);
 		}
 		printf("\n");
 	}
@@ -91,8 +91,8 @@ _Bool laSoNguyenTo(int n){
 
 int xetSoNguyenTo(int a[MAX][MAX], int n){
 	int dem = 0;
+	int k =0; //k=sohang
 	int demmax = 0;
-	int vitri = 0;
 	for(int i=0; i<n; i++){
 		dem =0;
 		for(int j=0; j<n; j++){
@@ -100,19 +100,21 @@ int xetSoNguyenTo(int a[MAX][MAX], int n){
 				dem ++;
 			}
 		printf("Hang thu %d co %d so nguyen to.\n", i+1, dem);
-
-		if(demmax < dem){
-			demmax = dem;
-			vitri = i+1;
-		}
-	}
-	switch (demmax){
-		case 0:
-			printf("Khong hang nao co SNT.\n");
-			break;
-		default:
-			printf("Hang %d co nhieu SNT nhat.\n", vitri);
-	}
+        b[k] = dem;
+        k++;
+    }
+    int max = b[0];
+    for(int j=0; j<k; j++){
+        if(b[j]>max){
+            max=b[j];
+        }
+    }
+   printf("Hang co so luong snt lon nhat la: ");
+    for(int j=0; j<k; j++){
+        if(b[j]==max){
+            printf("%d\t", j+1);
+        }
+    }
 }
 // e.
 int soDuong(int a[MAX][MAX], int n){
@@ -144,6 +146,7 @@ int main() {
 	int n, x, y;
 	printf("Nhap chi so ma tran: "); scanf("%d", &n);
 	nhapMaTran(a,n);
+	printf("\n");
 	xuatMaTran(a,n);
 // a. Kiem tra ma tran do vi
 	if(kTraMaTranDonVi(a,n) == 0){
@@ -161,7 +164,7 @@ int main() {
 // d. Kiem tra hang i co chua snt hay khong, hang nao chua nhieu snt nhat
 	xetSoNguyenTo(a,n);
 // e. Bao nhieu so duong va bao nhieu so am
-	printf("Ma tran tren chua %d so duong \n", soDuong(a,n));
+	printf("\nMa tran tren chua %d so duong \n", soDuong(a,n));
 	printf("Ma tran tren chua %d so am \n", soAm(a,n));
    return 0;
 }
